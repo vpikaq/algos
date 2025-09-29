@@ -1,6 +1,6 @@
 # Эмпирический анализ временной сложности алгоритмов
-Фомин И.Н.
-ИУ10-37
+Иванова Полина
+ИУ10-38
 ## Задания
 ### Задание 1.1
 
@@ -9,29 +9,31 @@
 import random, usage_time
 import matplotlib.pyplot as plt
 
+def sum_elements(v: list):
+    return sum(v)
 
-def get_by_index(v: list):
-    return v[random.randint(0, len(v)) - 1]
 
-items = range(1, 10**5 * (20 - 7), 50000)
-func = usage_time.get_usage_time()(get_by_index)
+items = range(1, 10**5 * 14, 50000)
+
+func = usage_time.get_usage_time()(sum_elements)
+
 times = [
-    func([
-        random.randint(1, 3) 
-        for _ in range(n)
-    ]) 
+    func([random.randint(1, 3) for _ in range(n)]) 
     for n in items
 ]
 
-fig = plt.plot(items, times, 'bo-')
+
+plt.plot(items, times, 'm-o', linewidth=1.5, markersize=5)
 ax = plt.gca()
 
-plt.title('The execution time of the get by index algorithm')
-ax.set_xlabel('Number of elements')
-ax.set_ylabel('Time, sec')
+plt.title('time of sum')
+ax.set_xlabel('number of elements')
+ax.set_ylabel('seconds')
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.show()
 ```
-![png](Lab_01_files/Lab_01_1_1.png)
-    
+![Uploading Screenshot 2025-09-28 203300.png…]()
+
 
 
 ### Задание 1.3
